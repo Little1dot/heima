@@ -1,0 +1,726 @@
+2026-01-30 17:01:18,706 - agent - INFO - logger_handle.py:50 - 信息日志
+2026-01-30 17:01:18,706 - agent - DEBUG - logger_handle.py:51 - 调试日志
+2026-01-30 17:01:18,706 - agent - WARNING - logger_handle.py:52 - 警告日志
+2026-01-30 17:01:18,706 - agent - ERROR - logger_handle.py:53 - 错误日志
+2026-01-31 00:31:21,397 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\扫地机器人100问.pdf添加失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 88, in load_document
+    self.vector_store.add_documents(split_documents)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\vectorstores\base.py", line 257, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 116, in call
+    output = next(response)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 448, in _handle_request
+    raise e
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 426, in _handle_request
+    response = session.post(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+2026-01-31 00:31:21,454 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\扫地机器人100问2.txt添加失败: Error loading data\扫地机器人100问2.txt
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+UnicodeDecodeError: 'gbk' codec can't decode byte 0xab in position 4: illegal multibyte sequence
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 76, in load_document
+    documents = get_file_documents(path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 58, in get_file_documents
+    return txt_loader(file_path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\utils\file_handler.py", line 52, in txt_loader
+    return TextLoader(filepath).load()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading data\扫地机器人100问2.txt
+2026-01-31 00:31:21,460 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\扫拖一体机器人100问.txt添加失败: Error loading data\扫拖一体机器人100问.txt
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+UnicodeDecodeError: 'gbk' codec can't decode byte 0xab in position 4: illegal multibyte sequence
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 76, in load_document
+    documents = get_file_documents(path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 58, in get_file_documents
+    return txt_loader(file_path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\utils\file_handler.py", line 52, in txt_loader
+    return TextLoader(filepath).load()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading data\扫拖一体机器人100问.txt
+2026-01-31 00:31:21,466 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\故障排除.txt添加失败: Error loading data\故障排除.txt
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+UnicodeDecodeError: 'gbk' codec can't decode byte 0xab in position 2: illegal multibyte sequence
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 76, in load_document
+    documents = get_file_documents(path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 58, in get_file_documents
+    return txt_loader(file_path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\utils\file_handler.py", line 52, in txt_loader
+    return TextLoader(filepath).load()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading data\故障排除.txt
+2026-01-31 00:31:21,472 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\维护保养.txt添加失败: Error loading data\维护保养.txt
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+UnicodeDecodeError: 'gbk' codec can't decode byte 0xab in position 4: illegal multibyte sequence
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 76, in load_document
+    documents = get_file_documents(path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 58, in get_file_documents
+    return txt_loader(file_path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\utils\file_handler.py", line 52, in txt_loader
+    return TextLoader(filepath).load()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading data\维护保养.txt
+2026-01-31 00:31:21,479 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\选购指南.txt添加失败: Error loading data\选购指南.txt
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+UnicodeDecodeError: 'gbk' codec can't decode byte 0xab in position 2: illegal multibyte sequence
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 76, in load_document
+    documents = get_file_documents(path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 58, in get_file_documents
+    return txt_loader(file_path)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\utils\file_handler.py", line 52, in txt_loader
+    return TextLoader(filepath).load()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading data\选购指南.txt
+2026-01-31 00:33:12,096 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\扫地机器人100问.pdf添加失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 88, in load_document
+    self.vector_store.add_documents(split_documents)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\vectorstores\base.py", line 257, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 116, in call
+    output = next(response)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 448, in _handle_request
+    raise e
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 426, in _handle_request
+    response = session.post(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+2026-01-31 00:33:12,109 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\扫地机器人100问2.txt添加失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 88, in load_document
+    self.vector_store.add_documents(split_documents)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\vectorstores\base.py", line 257, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 116, in call
+    output = next(response)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 448, in _handle_request
+    raise e
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 426, in _handle_request
+    response = session.post(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+2026-01-31 00:33:12,121 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\扫拖一体机器人100问.txt添加失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 88, in load_document
+    self.vector_store.add_documents(split_documents)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\vectorstores\base.py", line 257, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 116, in call
+    output = next(response)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 448, in _handle_request
+    raise e
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 426, in _handle_request
+    response = session.post(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+2026-01-31 00:33:12,169 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\故障排除.txt添加失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 88, in load_document
+    self.vector_store.add_documents(split_documents)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\vectorstores\base.py", line 257, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 116, in call
+    output = next(response)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 448, in _handle_request
+    raise e
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 426, in _handle_request
+    response = session.post(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+2026-01-31 00:33:12,201 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\维护保养.txt添加失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 88, in load_document
+    self.vector_store.add_documents(split_documents)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\vectorstores\base.py", line 257, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 116, in call
+    output = next(response)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 448, in _handle_request
+    raise e
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 426, in _handle_request
+    response = session.post(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+2026-01-31 00:33:12,233 - agent - ERROR - vector_store.py:95 - [加载知识库]文件data\选购指南.txt添加失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:997)
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 88, in load_document
+    self.vector_store.add_documents(split_documents)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_core\vectorstores\base.py", line 257, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_chroma\vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "C:\Users\14231\AppData\Roaming\uv\python\cpython-3.10.4-windows-x86_64-none\lib\concurrent\futures\_base.py", line 391, in __get_result
+    raise self._exception
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\embeddings\dashscope.py", line 66, in _embed_with_retry
+    resp = embeddings.client.call(**kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\embeddings\text_embedding.py", line 52, in call
+    return super().call(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\client\base_api.py", line 515, in call
+    return request.call()
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 116, in call
+    output = next(response)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 448, in _handle_request
+    raise e
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\dashscope\api_entities\http_request.py", line 426, in _handle_request
+    response = session.post(
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\14231\OneDrive\Desktop\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\requests\adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/embeddings/text-embedding/text-embedding (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))))
+2026-01-31 00:33:23,397 - agent - INFO - vector_store.py:92 - [加载知识库]文件data\扫地机器人100问.pdf添加成功
+2026-01-31 00:33:26,200 - agent - INFO - vector_store.py:92 - [加载知识库]文件data\扫地机器人100问2.txt添加成功
+2026-01-31 00:33:29,446 - agent - INFO - vector_store.py:92 - [加载知识库]文件data\扫拖一体机器人100问.txt添加成功
+2026-01-31 00:33:35,137 - agent - INFO - vector_store.py:92 - [加载知识库]文件data\故障排除.txt添加成功
+2026-01-31 00:33:38,463 - agent - INFO - vector_store.py:92 - [加载知识库]文件data\维护保养.txt添加成功
+2026-01-31 00:33:41,421 - agent - INFO - vector_store.py:92 - [加载知识库]文件data\选购指南.txt添加成功
+2026-01-31 00:39:05,148 - agent - WARNING - vector_store.py:73 - [md5计算]文件data\扫地机器人100问.pdf已存在
+2026-01-31 00:39:05,148 - agent - WARNING - vector_store.py:73 - [md5计算]文件data\扫地机器人100问2.txt已存在
+2026-01-31 00:39:05,149 - agent - WARNING - vector_store.py:73 - [md5计算]文件data\扫拖一体机器人100问.txt已存在
+2026-01-31 00:39:05,149 - agent - WARNING - vector_store.py:73 - [md5计算]文件data\故障排除.txt已存在
+2026-01-31 00:39:05,149 - agent - WARNING - vector_store.py:73 - [md5计算]文件data\维护保养.txt已存在
+2026-01-31 00:39:05,149 - agent - WARNING - vector_store.py:73 - [md5计算]文件data\选购指南.txt已存在
+2026-01-31 01:26:47,474 - agent - INFO - logger_handle.py:50 - 信息日志
+2026-01-31 01:26:47,474 - agent - DEBUG - logger_handle.py:51 - 调试日志
+2026-01-31 01:26:47,474 - agent - WARNING - logger_handle.py:52 - 警告日志
+2026-01-31 01:26:47,474 - agent - ERROR - logger_handle.py:53 - 错误日志
+2026-01-31 01:38:50,720 - agent - INFO - logger_handle.py:50 - 信息日志
+2026-01-31 01:38:50,720 - agent - DEBUG - logger_handle.py:51 - 调试日志
+2026-01-31 01:38:50,720 - agent - WARNING - logger_handle.py:52 - 警告日志
+2026-01-31 01:38:50,720 - agent - ERROR - logger_handle.py:53 - 错误日志
+2026-01-31 02:04:55,691 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫地机器人100问.pdf已存在
+2026-01-31 02:04:55,692 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫地机器人100问2.txt已存在
+2026-01-31 02:04:55,693 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫拖一体机器人100问.txt已存在
+2026-01-31 02:04:55,694 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\故障排除.txt已存在
+2026-01-31 02:04:55,694 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\维护保养.txt已存在
+2026-01-31 02:04:55,695 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\选购指南.txt已存在
+2026-01-31 02:13:10,950 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫地机器人100问.pdf已存在
+2026-01-31 02:13:10,951 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫地机器人100问2.txt已存在
+2026-01-31 02:13:10,952 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫拖一体机器人100问.txt已存在
+2026-01-31 02:13:10,953 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\故障排除.txt已存在
+2026-01-31 02:13:10,953 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\维护保养.txt已存在
+2026-01-31 02:13:10,954 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\选购指南.txt已存在
+2026-01-31 02:14:03,467 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫地机器人100问.pdf已存在
+2026-01-31 02:14:03,468 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫地机器人100问2.txt已存在
+2026-01-31 02:14:03,468 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫拖一体机器人100问.txt已存在
+2026-01-31 02:14:03,468 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\故障排除.txt已存在
+2026-01-31 02:14:03,468 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\维护保养.txt已存在
+2026-01-31 02:14:03,468 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\选购指南.txt已存在
+2026-01-31 02:14:19,648 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫地机器人100问.pdf已存在
+2026-01-31 02:14:19,650 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫地机器人100问2.txt已存在
+2026-01-31 02:14:19,650 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\扫拖一体机器人100问.txt已存在
+2026-01-31 02:14:19,650 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\故障排除.txt已存在
+2026-01-31 02:14:19,650 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\维护保养.txt已存在
+2026-01-31 02:14:19,652 - agent - WARNING - vector_store.py:86 - [md5计算]文件data\选购指南.txt已存在
+2026-01-31 18:45:27,490 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 18:45:27,490 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-01-31 18:45:39,285 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 18:45:39,285 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-01-31 18:45:41,760 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-01-31 18:45:41,760 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 18:45:41,761 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-01-31 18:45:41,763 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-01-31 18:45:41,763 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1009
+2026-01-31 18:45:44,605 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-01-31 18:45:44,605 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 18:45:44,606 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-01-31 18:45:44,606 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-01-31 18:45:44,607 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-02
+2026-01-31 18:45:46,401 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-01-31 18:45:46,401 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 18:45:46,401 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-01-31 18:45:46,401 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-01-31 18:45:46,401 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-01-31 18:45:48,487 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-01-31 18:45:48,487 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1009', 'month': '2025-02'}
+2026-01-31 18:45:48,491 - agent - ERROR - middleware.py:31 - 工具fetch_external_data调用失败，原因：'NoneType' object is not subscriptable
+2026-01-31 18:51:48,426 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 18:51:48,427 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-01-31 18:54:37,144 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 18:54:37,144 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-01-31 18:55:50,329 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 18:55:50,329 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-01-31 18:57:30,858 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 18:57:30,858 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-01-31 18:58:19,539 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 18:58:19,539 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-01-31 18:58:21,581 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-01-31 18:58:21,582 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 18:58:21,583 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-01-31 18:58:21,583 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-01-31 18:58:21,583 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-01-31 18:58:24,371 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-01-31 18:58:24,372 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 18:58:24,372 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-01-31 18:58:24,373 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-01-31 18:58:24,373 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1001
+2026-01-31 18:58:25,840 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-01-31 18:58:25,840 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 18:58:25,840 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-01-31 18:58:25,843 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-01-31 18:58:25,843 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-08
+2026-01-31 18:58:28,056 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-01-31 18:58:28,057 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1001', 'month': '2025-08'}
+2026-01-31 18:58:28,073 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-01-31 18:58:28,073 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-01-31 18:58:28,074 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "65㎡公寓 | 单身 | 木地板", "效率": "覆盖率:83%\\n日均清扫:43㎡\\n漏扫区域:沙发底部+床底+阳台角落", "耗材": "主刷寿命:剩余50天\\nHEPA滤网:剩余30%", "对比": "优于60%同面积用户（清洁频率持续略降）"}
+2026-01-31 18:58:30,789 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-01-31 18:58:30,790 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人主刷和HEPA滤网保养建议'}
+2026-01-31 18:58:35,382 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-01-31 18:58:35,386 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-01-31 18:58:35,386 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | HEPA滤网建议每周用软毛刷轻刷表面灰尘，每1-2个月可清水冲洗（不可揉搓）并阴凉晾干，但水洗会降低过滤效果，需每3-6个月更换。主刷在普通家庭建议3-6个月更换，宠物家庭或长毛地毯环境需1-3个月更换；若为胶刷寿命约1-2年，毛刷则需每6-12个月检查磨损情况，出现磨损、变形或开裂应立即更换；可拆卸主刷建议每周拆卸清洗一次（非防水款用干布擦拭），晾干后装回。
+2026-01-31 18:58:37,575 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-01-31 18:58:37,576 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人漏扫区域处理方法'}
+2026-01-31 18:58:41,608 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-01-31 18:58:41,612 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-01-31 18:58:41,614 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 扫地机器人漏扫区域的处理方法包括：检查是否设置了禁区，重新建图，开启边界或沿边清扫模式；确认地图是否完整、环境是否有新障碍物；检查边刷是否磨损、沿边传感器是否有灰尘；确保电量充足；必要时可手动遥控补扫。
+2026-01-31 19:01:29,971 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 19:01:29,971 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 你好
+2026-01-31 19:02:08,939 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 19:02:08,939 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我想购买一款扫地机器人，我家比较大，大概有200平方米，给我推荐一下
+2026-01-31 19:02:10,826 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-01-31 19:02:10,827 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '大户型200平方米 扫地机器人 推荐'}
+2026-01-31 19:02:14,316 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-01-31 19:02:15,728 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-01-31 19:02:15,729 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 针对200平方米大户型，推荐选择具备大电池（>5200mAh）、自动集尘或自动洗拖布功能的扫地机器人；吸力建议≥3000Pa，优先采用激光导航以确保在复杂户型中定位精准、抗干扰强。
+2026-01-31 19:02:32,630 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 19:02:32,630 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 可以给我生成一份我的用户报告吗
+2026-01-31 19:02:35,884 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-01-31 19:02:35,884 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 19:02:35,885 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-01-31 19:02:35,961 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-01-31 19:02:35,961 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1007
+2026-01-31 19:02:39,226 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-01-31 19:02:39,226 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 19:02:39,226 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-01-31 19:02:39,348 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-01-31 19:02:39,349 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-11
+2026-01-31 19:02:42,838 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-01-31 19:02:42,839 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-01-31 19:02:42,839 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-01-31 19:02:43,249 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-01-31 19:02:43,250 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-01-31 19:02:46,567 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-01-31 19:02:46,567 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1007', 'month': '2025-11'}
+2026-01-31 19:02:46,569 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-01-31 19:02:48,388 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-01-31 19:02:48,388 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "55㎡一居 | 独居 | 复合地板", "效率": "覆盖率:93%\\n日均清扫:38㎡\\n无漏扫区域", "耗材": "滤网寿命:剩余55天\\n尘盒清理:每5天", "对比": "清洁效率优于80%小户型用户"}
+2026-01-31 19:02:50,922 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-01-31 19:02:50,922 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人滤网更换周期和尘盒清理建议'}
+2026-01-31 19:02:56,009 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-01-31 19:02:58,355 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-01-31 19:02:58,356 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 滤网更换周期：HEPA滤网建议每3-6个月更换一次，期间可每月用清水冲洗并阴凉晾干后重复使用，但水洗可能降低过滤效果。尘盒清理建议：普通家庭每2-3天清理一次，宠物家庭或大户型建议每天清理；每次使用后清理最佳，至少每2-3次清扫清理一次。清理时用干布擦拭内部，避免灰尘结块，不可用水浸泡（防水尘盒除外）。
+2026-01-31 19:03:05,964 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-01-31 19:03:05,964 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '复合地板扫地机器人使用建议'}
+2026-01-31 19:03:07,807 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-01-31 19:03:08,693 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-01-31 19:03:08,693 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 复合地板环境下，拖地时应调至低档出水量或使用干拖模式，避免地面积水；每周对机器人轮组进行除尘，防止泥沙磨损地板。
+2026-01-31 19:04:18,682 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 19:04:18,682 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 好的，谢谢你
+2026-01-31 19:04:44,514 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 19:04:44,514 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我推荐一个性价比高的扫地机器人
+2026-01-31 19:04:46,446 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-01-31 19:04:46,446 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '性价比高的扫地机器人推荐'}
+2026-01-31 19:04:50,515 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-01-31 19:04:53,490 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-01-31 19:04:53,491 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 性价比高的扫地机器人推荐需结合预算与使用场景：3000元内可选具备激光导航和旋转拖布的基础款；优先选择吸力≥3000Pa、带双边刷、防缠绕主刷（尤其有宠物或长发家庭）、HEPA H13级滤网及机身高度≤7.5cm的机型；激光导航定位精准，适合复杂户型，视觉导航性价比高但需避免强光环境；关注真实用户评价，重点考察续航、避障和售后表现。国产机型功能丰富、性价比优于iRobot等国际品牌。
+2026-01-31 19:12:44,025 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 19:12:44,026 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 500元
+2026-01-31 19:13:02,213 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-01-31 19:13:02,213 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 没有历史消息记录
