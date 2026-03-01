@@ -724,3 +724,92 @@ requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com
 2026-01-31 19:12:44,026 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 500元
 2026-01-31 19:13:02,213 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
 2026-01-31 19:13:02,213 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 没有历史消息记录
+2026-02-28 18:31:57,486 - agent - WARNING - vector_store.py:39 - EnsembleRetriever 未找到，将使用基础检索器
+2026-02-28 18:31:58,323 - agent - INFO - vector_store.py:82 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-02-28 18:31:58,330 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\扫地机器人100问.pdf已存在
+2026-02-28 18:31:58,335 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\扫地机器人100问2.txt已存在
+2026-02-28 18:31:58,340 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\扫拖一体机器人100问.txt已存在
+2026-02-28 18:31:58,345 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\故障排除.txt已存在
+2026-02-28 18:31:58,350 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\维护保养.txt已存在
+2026-02-28 18:31:58,356 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\选购指南.txt已存在
+2026-02-28 18:31:58,356 - agent - WARNING - vector_store.py:112 - [混合检索] EnsembleRetriever 不可用，使用 BM25 检索器。
+2026-02-28 18:45:32,273 - agent - WARNING - vector_store.py:39 - EnsembleRetriever 未找到，将使用基础检索器
+2026-02-28 18:45:32,990 - agent - INFO - vector_store.py:82 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-02-28 18:45:32,993 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\扫地机器人100问.pdf已存在
+2026-02-28 18:45:32,994 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\扫地机器人100问2.txt已存在
+2026-02-28 18:45:32,995 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\扫拖一体机器人100问.txt已存在
+2026-02-28 18:45:32,996 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\故障排除.txt已存在
+2026-02-28 18:45:32,996 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\维护保养.txt已存在
+2026-02-28 18:45:32,997 - agent - WARNING - vector_store.py:170 - [md5计算]文件data\选购指南.txt已存在
+2026-02-28 18:45:32,997 - agent - WARNING - vector_store.py:112 - [混合检索] EnsembleRetriever 不可用，不使用 BM25 检索器。
+2026-02-28 18:50:55,917 - agent - WARNING - vector_store.py:48 - EnsembleRetriever 未找到，将使用基础检索器
+2026-02-28 18:50:56,199 - agent - INFO - vector_store.py:91 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-02-28 18:50:56,201 - agent - WARNING - vector_store.py:179 - [md5计算]文件data\扫地机器人100问.pdf已存在
+2026-02-28 18:50:56,202 - agent - WARNING - vector_store.py:179 - [md5计算]文件data\扫地机器人100问2.txt已存在
+2026-02-28 18:50:56,202 - agent - WARNING - vector_store.py:179 - [md5计算]文件data\扫拖一体机器人100问.txt已存在
+2026-02-28 18:50:56,204 - agent - WARNING - vector_store.py:179 - [md5计算]文件data\故障排除.txt已存在
+2026-02-28 18:50:56,205 - agent - WARNING - vector_store.py:179 - [md5计算]文件data\维护保养.txt已存在
+2026-02-28 18:50:56,205 - agent - WARNING - vector_store.py:179 - [md5计算]文件data\选购指南.txt已存在
+2026-02-28 18:50:56,205 - agent - WARNING - vector_store.py:121 - [混合检索] EnsembleRetriever 不可用，不使用 BM25 检索器。
+2026-03-01 14:03:37,461 - agent - WARNING - test.py:38 - 无法加载 EnsembleRetriever 组件，混合检索将降级为单一模式
+2026-03-01 14:03:38,203 - agent - INFO - test.py:73 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 14:03:38,223 - agent - WARNING - test.py:141 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-01 14:03:38,230 - agent - WARNING - test.py:141 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-01 14:03:38,233 - agent - WARNING - test.py:141 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-01 14:03:38,236 - agent - WARNING - test.py:141 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-01 14:03:38,240 - agent - WARNING - test.py:141 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-01 14:03:38,245 - agent - WARNING - test.py:141 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-01 14:03:38,245 - agent - WARNING - test.py:95 - [混合检索] 降级为单路 Chroma MMR 检索。
+2026-03-01 14:03:38,245 - agent - INFO - test.py:176 - 开始测试检索，查询词: 机器人迷路了怎么办
+2026-03-01 14:13:37,008 - agent - INFO - test.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 14:13:37,009 - agent - WARNING - test.py:140 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-01 14:13:37,009 - agent - WARNING - test.py:140 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-01 14:13:37,010 - agent - WARNING - test.py:140 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-01 14:13:37,010 - agent - WARNING - test.py:140 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-01 14:13:37,011 - agent - WARNING - test.py:140 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-01 14:13:37,011 - agent - WARNING - test.py:140 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-01 14:13:37,011 - agent - INFO - test.py:93 - [混合检索] 正在加载自定义 RRF 组装模块
+2026-03-01 14:13:37,011 - agent - INFO - test.py:175 - 开始测试检索，查询词: 机器人迷路了怎么办
+2026-03-01 14:19:16,446 - agent - INFO - test.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 14:19:16,447 - agent - WARNING - test.py:140 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-01 14:19:16,447 - agent - WARNING - test.py:140 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-01 14:19:16,447 - agent - WARNING - test.py:140 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-01 14:19:16,448 - agent - WARNING - test.py:140 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-01 14:19:16,448 - agent - WARNING - test.py:140 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-01 14:19:16,449 - agent - WARNING - test.py:140 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-01 14:19:16,449 - agent - INFO - test.py:93 - [混合检索] 正在加载自定义 RRF 组装模块
+2026-03-01 14:19:16,449 - agent - INFO - test.py:175 - 开始测试检索，查询词: 机器人迷路了怎么办
+2026-03-01 14:23:29,509 - agent - INFO - test.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 14:23:29,510 - agent - WARNING - test.py:150 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-01 14:23:29,510 - agent - WARNING - test.py:150 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-01 14:23:29,510 - agent - WARNING - test.py:150 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-01 14:23:29,510 - agent - WARNING - test.py:150 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-01 14:23:29,512 - agent - WARNING - test.py:150 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-01 14:23:29,512 - agent - WARNING - test.py:150 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-01 14:23:58,188 - agent - INFO - test.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 14:23:58,189 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-01 14:23:58,189 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-01 14:23:58,189 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-01 14:23:58,190 - agent - WARNING - test.py:148 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-01 14:23:58,190 - agent - WARNING - test.py:148 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-01 14:23:58,190 - agent - WARNING - test.py:148 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-01 14:23:58,190 - agent - INFO - test.py:102 - [混合检索] 正在组装：BM25 + 向量(similarity)
+2026-03-01 14:23:58,486 - agent - INFO - test.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 14:44:41,884 - agent - INFO - test.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 14:44:41,885 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-01 14:44:41,887 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-01 14:44:41,888 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-01 14:44:41,889 - agent - WARNING - test.py:148 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-01 14:44:41,889 - agent - WARNING - test.py:148 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-01 14:44:41,890 - agent - WARNING - test.py:148 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-01 14:44:41,890 - agent - INFO - test.py:102 - [混合检索] 正在组装：BM25 + 向量(similarity)
+2026-03-01 14:44:42,227 - agent - INFO - test.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 15:45:38,150 - agent - INFO - test.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 15:45:38,151 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-01 15:45:38,151 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-01 15:45:38,152 - agent - WARNING - test.py:148 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-01 15:45:38,152 - agent - WARNING - test.py:148 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-01 15:45:38,152 - agent - WARNING - test.py:148 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-01 15:45:38,153 - agent - WARNING - test.py:148 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-01 15:45:38,154 - agent - INFO - test.py:102 - [混合检索] 正在组装：BM25 + 向量(similarity)
+2026-03-01 15:45:38,466 - agent - INFO - test.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
