@@ -813,3 +813,442 @@ requests.exceptions.ProxyError: HTTPSConnectionPool(host='dashscope.aliyuncs.com
 2026-03-01 15:45:38,153 - agent - WARNING - test.py:148 - [MD5] 文件 data\选购指南.txt 已存在，跳过
 2026-03-01 15:45:38,154 - agent - INFO - test.py:102 - [混合检索] 正在组装：BM25 + 向量(similarity)
 2026-03-01 15:45:38,466 - agent - INFO - test.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 17:56:24,565 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 17:56:24,566 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 17:56:24,646 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 17:56:24,646 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 17:57:03,529 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 17:57:03,530 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 17:57:03,586 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 17:57:03,586 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 17:57:25,407 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 17:57:25,407 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 17:57:25,419 - agent - WARNING - history_manager.py:50 - [历史消息]会话default的历史消息文件不存在
+2026-03-01 17:57:25,424 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-03-01 17:57:25,424 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-03-01 17:57:27,709 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-03-01 17:57:27,709 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 17:57:27,711 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-03-01 17:57:27,713 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-03-01 17:57:27,713 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1006
+2026-03-01 17:57:29,410 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-03-01 17:57:29,411 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 17:57:29,411 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-03-01 17:57:29,413 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-03-01 17:57:29,413 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-07
+2026-03-01 17:57:34,879 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-03-01 17:57:34,880 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 17:57:34,880 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-03-01 17:57:34,881 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-03-01 17:57:34,881 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-03-01 17:57:38,395 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-03-01 17:57:38,395 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1006', 'month': '2025-07'}
+2026-03-01 17:57:38,404 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-03-01 17:57:38,405 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-03-01 17:57:38,405 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "150㎡别墅 | 儿童 | 多层", "效率": "跨楼层失败:4次/周\\n玩具避障率:73%", "耗材": "边刷更换:待更换\\n集尘袋消耗:1.3个/月", "对比": "机械臂配件故障+需检修跨楼层导航"}
+2026-03-01 17:57:40,753 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-01 17:57:40,756 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人边刷更换周期和集尘袋使用建议'}
+2026-03-01 17:57:43,099 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-01 17:57:43,100 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-03-01 17:57:43,100 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 边刷磨损至刷毛长度小于1厘米时应立即更换；自动集尘款机器人在普通家庭建议每1-2个月更换一次集尘袋，宠物家庭建议每半个月至1个月更换一次。
+2026-03-01 17:57:45,200 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-01 17:57:45,200 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人跨楼层导航失败原因及机械臂配件维护'}
+2026-03-01 17:57:49,687 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-01 17:57:49,688 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-03-01 17:57:49,688 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 扫地机器人跨楼层导航失败未在参考资料中提及。机械臂配件维护方面，参考资料提到拖布支架松动时需检查卡扣是否断裂或安装不到位，必要时重新安装或更换支架；驱动轮、万向轮缠绕毛发或杂物会导致移动异常，应清理缠绕物并可滴加专用润滑油；拖地时机身晃动需检查拖布是否平整、驱动轮是否卡顿及地面是否积水。售后配件供应周期不少于5年。
+2026-03-01 17:58:07,548 - agent - INFO - history_manager.py:37 - [历史消息]会话default的历史消息已保存
+2026-03-01 18:13:01,696 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 18:13:01,696 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 18:13:01,767 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 18:13:01,768 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 18:28:37,637 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 18:28:37,637 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 18:28:37,701 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 18:28:37,701 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 18:28:37,701 - agent - ERROR - prompt_loader.py:51 - [load_report_prompt]未找到报告提示文件[report_prompt_path]
+2026-03-01 18:32:37,156 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 18:32:37,157 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 18:32:37,212 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 18:32:37,213 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 18:32:37,213 - agent - ERROR - prompt_loader.py:51 - [load_classify_prompt]未找到识别提示文件[classify_prompt_path]
+2026-03-01 19:01:43,295 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 19:01:43,295 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 19:01:43,408 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 19:01:43,408 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 19:01:43,409 - agent - ERROR - prompt_loader.py:51 - [load_classify_prompt]未找到识别提示文件[classify_prompt_path]
+2026-03-01 19:06:15,890 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 19:06:15,891 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 19:06:15,901 - agent - INFO - history_manager.py:54 - [历史消息]会话default的历史消息已加载
+2026-03-01 19:06:15,904 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-03-01 19:06:15,905 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-03-01 19:06:18,253 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-03-01 19:06:18,253 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 19:06:18,254 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-03-01 19:06:18,255 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-03-01 19:06:18,255 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1002
+2026-03-01 19:06:24,639 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-03-01 19:06:24,639 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 19:06:24,639 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-03-01 19:06:24,640 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-03-01 19:06:24,640 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-01
+2026-03-01 19:06:27,808 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-03-01 19:06:27,809 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 19:06:27,809 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-03-01 19:06:27,810 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-03-01 19:06:27,810 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-03-01 19:06:30,658 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-03-01 19:06:30,660 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1002', 'month': '2025-01'}
+2026-03-01 19:06:30,670 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-03-01 19:06:30,670 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-03-01 19:06:30,672 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "70㎡公寓 | 情侣 | 瓷砖", "效率": "覆盖率:88%\\n避障失败:2次/周（电线缠绕）", "耗材": "边刷磨损:中度\\n尘盒清理:每3天", "对比": "拖地功能使用率低于同类30%"}
+2026-03-01 19:06:33,290 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-01 19:06:33,292 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '边刷磨损更换标准'}
+2026-03-01 19:06:35,986 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-01 19:06:35,986 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-03-01 19:06:35,988 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 边刷磨损后会导致边角清扫不彻底，建议每6-12个月更换一次，具体视使用频率而定；若出现磨损、变形或边刷卡扣断裂、松动无法固定，应立即更换。
+2026-03-01 19:06:38,399 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-01 19:06:38,399 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '拖地功能使用率低的原因和建议'}
+2026-03-01 19:06:43,724 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-01 19:06:43,726 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有15条消息。
+2026-03-01 19:06:43,726 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 拖地功能使用率低的原因包括：不同地面清洁效果不一致、拖布掉毛产生毛絮、拖地后地面残留水渍或清洁液痕迹、水箱出水管堵塞、机身晃动偏移、以及环境因素（如多尘、潮湿或干燥）影响使用体验。建议措施有：在APP中设置分区清扫以适配不同地面；更换无尘拖布并预先浸泡拧干；调小出水量并开启干拖模式收尾；定期疏通出水管；确保拖布安装平整、地面无积水；根据环境调整使用策略，如多尘环境关闭拖地功能，潮湿环境减少拖地频次并使用干拖模式。
+2026-03-01 19:07:03,094 - agent - INFO - history_manager.py:37 - [历史消息]会话default的历史消息已保存
+2026-03-01 19:07:16,953 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 19:07:16,953 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 19:07:17,006 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 19:07:17,006 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 19:07:17,783 - agent - INFO - history_manager.py:54 - [历史消息]会话default的历史消息已加载
+2026-03-01 19:07:20,540 - agent - INFO - history_manager.py:37 - [历史消息]会话default的历史消息已保存
+2026-03-01 19:08:18,601 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 19:08:18,601 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 19:08:18,674 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-01 19:08:18,674 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-01 19:08:22,131 - agent - INFO - history_manager.py:54 - [历史消息]会话default的历史消息已加载
+2026-03-01 19:08:24,987 - agent - INFO - history_manager.py:37 - [历史消息]会话default的历史消息已保存
+2026-03-01 19:08:26,048 - agent - INFO - history_manager.py:54 - [历史消息]会话default的历史消息已加载
+2026-03-01 19:08:26,050 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-03-01 19:08:26,050 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-03-01 19:08:28,896 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-03-01 19:08:28,896 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 19:08:28,897 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-03-01 19:08:28,899 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-03-01 19:08:28,899 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1005
+2026-03-01 19:08:33,097 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-03-01 19:08:33,097 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 19:08:33,098 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-03-01 19:08:33,098 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-03-01 19:08:33,098 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-03
+2026-03-01 19:08:35,987 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-03-01 19:08:35,987 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-01 19:08:35,988 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-03-01 19:08:35,989 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有15条消息。
+2026-03-01 19:08:35,989 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-03-01 19:08:40,600 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-03-01 19:08:40,600 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1005', 'month': '2025-03'}
+2026-03-01 19:08:40,601 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-03-01 19:08:40,601 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有17条消息。
+2026-03-01 19:08:40,601 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "120㎡ | 老人 | 防滑砖", "效率": "手动操作占比:93%\\n定时清扫使用率:2次/周", "耗材": "电池衰减:27%\\n水箱首次激活:使用1次", "对比": "语音控制功能已预约安装"}
+2026-03-01 19:08:44,524 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-01 19:08:44,525 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人电池衰减27%如何处理'}
+2026-03-01 19:08:47,781 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-01 19:08:47,781 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有19条消息。
+2026-03-01 19:08:47,782 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 电池衰减27%属于续航明显下降，可先尝试定期进行满充满放校准电池；若使用1-2年后续航仍严重衰减，建议更换电池。避免长时间亏电，每次使用后及时回充。如需更换，可联系售后，因售后配件供应周期不少于5年，通常可购得原装电池。
+2026-03-01 19:08:50,723 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-01 19:08:50,724 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人水箱首次使用注意事项 老人操作简化'}
+2026-03-01 19:08:55,324 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-01 19:08:55,325 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有21条消息。
+2026-03-01 19:08:55,325 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 首次使用扫地机器人水箱时，应先拆除所有包装配件并充满电；加水时建议使用专用清洁液，按1:100比例与清水混合，不可直接加浓清洁液；确保拖布安装平整，避免机身晃动；操作可简化为：加水（或稀释液）→ 安装水箱 → 启动清扫。老人操作时可提前在APP中设置好出水量和清扫模式，减少现场操作步骤。
+2026-03-01 19:09:13,481 - agent - INFO - history_manager.py:37 - [历史消息]会话default的历史消息已保存
+2026-03-02 13:17:14,951 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 13:17:14,953 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 13:17:59,411 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 13:17:59,411 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 13:17:59,688 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 13:17:59,688 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 13:42:05,475 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 13:42:05,475 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 13:42:05,828 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 13:42:05,828 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 13:42:12,174 - agent - WARNING - history_manager.py:50 - [历史消息]会话2e0dd7a6的历史消息文件不存在
+2026-03-02 13:42:13,260 - agent - INFO - history_manager.py:37 - [历史消息]会话2e0dd7a6的历史消息已保存
+2026-03-02 13:42:21,592 - agent - WARNING - history_manager.py:50 - [历史消息]会话c2a88dd0的历史消息文件不存在
+2026-03-02 13:42:24,175 - agent - INFO - history_manager.py:37 - [历史消息]会话c2a88dd0的历史消息已保存
+2026-03-02 13:43:00,431 - agent - WARNING - history_manager.py:50 - [历史消息]会话255654dd的历史消息文件不存在
+2026-03-02 13:43:06,924 - agent - INFO - history_manager.py:37 - [历史消息]会话255654dd的历史消息已保存
+2026-03-02 13:45:13,003 - agent - INFO - history_manager.py:54 - [历史消息]会话c2a88dd0的历史消息已加载
+2026-03-02 13:45:15,306 - agent - INFO - history_manager.py:54 - [历史消息]会话2e0dd7a6的历史消息已加载
+2026-03-02 13:45:17,649 - agent - INFO - history_manager.py:54 - [历史消息]会话c2a88dd0的历史消息已加载
+2026-03-02 13:45:20,266 - agent - INFO - history_manager.py:54 - [历史消息]会话255654dd的历史消息已加载
+2026-03-02 13:45:26,408 - agent - INFO - history_manager.py:68 - [历史消息]会话255654dd的历史消息已删除
+2026-03-02 15:22:22,540 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 15:22:22,541 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 15:22:45,129 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 15:22:45,129 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 15:22:45,449 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 15:22:45,449 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 15:22:45,453 - agent - INFO - history_manager.py:54 - [历史消息]会话2e0dd7a6的历史消息已加载
+2026-03-02 15:22:51,219 - agent - INFO - history_manager.py:54 - [历史消息]会话2e0dd7a6的历史消息已加载
+2026-03-02 15:22:52,698 - agent - INFO - history_manager.py:37 - [历史消息]会话2e0dd7a6的历史消息已保存
+2026-03-02 15:22:56,246 - agent - INFO - history_manager.py:54 - [历史消息]会话2e0dd7a6的历史消息已加载
+2026-03-02 15:23:01,065 - agent - INFO - history_manager.py:37 - [历史消息]会话2e0dd7a6的历史消息已保存
+2026-03-02 15:23:12,389 - agent - INFO - history_manager.py:54 - [历史消息]会话2e0dd7a6的历史消息已加载
+2026-03-02 15:23:22,381 - agent - INFO - history_manager.py:37 - [历史消息]会话2e0dd7a6的历史消息已保存
+2026-03-02 15:23:41,817 - agent - INFO - history_manager.py:54 - [历史消息]会话2e0dd7a6的历史消息已加载
+2026-03-02 15:23:41,819 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-03-02 15:23:41,820 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我我的使用报告
+2026-03-02 15:23:44,580 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-03-02 15:23:44,582 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 15:23:44,583 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-03-02 15:23:44,583 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-03-02 15:23:44,583 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1001
+2026-03-02 15:23:48,796 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-03-02 15:23:48,796 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 15:23:48,796 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-03-02 15:23:48,796 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-03-02 15:23:48,799 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-02
+2026-03-02 15:23:52,958 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-03-02 15:23:52,959 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 15:23:52,959 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-03-02 15:23:52,959 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有15条消息。
+2026-03-02 15:23:52,959 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-03-02 15:23:56,827 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-03-02 15:23:56,828 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1001', 'month': '2025-02'}
+2026-03-02 15:23:56,828 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-03-02 15:23:56,833 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有17条消息。
+2026-03-02 15:23:56,833 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "65㎡公寓 | 单身 | 木地板", "效率": "覆盖率:86%\\n日均清扫:46㎡\\n漏扫区域:沙发底部（高度不足）", "耗材": "主刷寿命:剩余55天\\nHEPA滤网:剩余35%", "对比": "优于68%同面积用户（清洁频率更高）"}
+2026-03-02 15:24:01,461 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-02 15:24:01,462 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人主刷和HEPA滤网维护保养建议'}
+2026-03-02 15:24:04,657 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-02 15:24:04,659 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有19条消息。
+2026-03-02 15:24:04,659 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | HEPA滤网每周用软毛刷轻刷表面灰尘，每1-2个月用清水冲洗（不可揉搓）后阴凉晾干，3-6个月更换；主刷在普通家庭每3-6个月更换，宠物家庭或长毛地毯环境每1-3个月更换，出现磨损、变形或开裂应立即更换。每次清扫后应及时清理主刷缠绕物，每月检查主刷电机是否异常发热或异响，并注意保护滚刷轴承避免进水进灰。
+2026-03-02 15:24:36,744 - agent - INFO - history_manager.py:37 - [历史消息]会话2e0dd7a6的历史消息已保存
+2026-03-02 15:24:56,022 - agent - INFO - history_manager.py:54 - [历史消息]会话c2a88dd0的历史消息已加载
+2026-03-02 15:24:58,876 - agent - INFO - history_manager.py:54 - [历史消息]会话default的历史消息已加载
+2026-03-02 15:25:03,500 - agent - INFO - history_manager.py:54 - [历史消息]会话2e0dd7a6的历史消息已加载
+2026-03-02 15:25:06,024 - agent - INFO - history_manager.py:68 - [历史消息]会话2e0dd7a6的历史消息已删除
+2026-03-02 15:25:06,572 - agent - INFO - history_manager.py:54 - [历史消息]会话c2a88dd0的历史消息已加载
+2026-03-02 15:25:07,740 - agent - INFO - history_manager.py:54 - [历史消息]会话default的历史消息已加载
+2026-03-02 15:25:08,106 - agent - INFO - history_manager.py:68 - [历史消息]会话default的历史消息已删除
+2026-03-02 15:25:08,660 - agent - INFO - history_manager.py:54 - [历史消息]会话c2a88dd0的历史消息已加载
+2026-03-02 15:25:09,256 - agent - INFO - history_manager.py:68 - [历史消息]会话c2a88dd0的历史消息已删除
+2026-03-02 15:25:19,033 - agent - WARNING - history_manager.py:50 - [历史消息]会话49a3d34b的历史消息文件不存在
+2026-03-02 15:25:20,097 - agent - INFO - history_manager.py:37 - [历史消息]会话49a3d34b的历史消息已保存
+2026-03-02 15:25:30,480 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 15:25:35,077 - agent - INFO - history_manager.py:37 - [历史消息]会话49a3d34b的历史消息已保存
+2026-03-02 15:25:47,948 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 15:25:47,949 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-03-02 15:25:47,949 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 生成使用报告
+2026-03-02 15:25:50,879 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-03-02 15:25:50,879 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 15:25:50,879 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-03-02 15:25:50,879 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-03-02 15:25:50,879 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1002
+2026-03-02 15:25:54,241 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-03-02 15:25:54,241 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 15:25:54,241 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-03-02 15:25:54,241 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-03-02 15:25:54,241 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-12
+2026-03-02 15:26:01,428 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-03-02 15:26:01,428 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 15:26:01,428 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-03-02 15:26:01,428 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-03-02 15:26:01,428 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-03-02 15:26:04,394 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-03-02 15:26:04,394 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1002', 'month': '2025-12'}
+2026-03-02 15:26:04,395 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-03-02 15:26:04,396 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-03-02 15:26:04,396 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "70㎡公寓 | 情侣 | 瓷砖", "效率": "覆盖率:92%\\n避障成功率:100%", "耗材": "边刷寿命:剩余40天\\n尘盒清理:每5天", "对比": "拖地功能使用率优于同类15%"}
+2026-03-02 15:26:07,461 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-02 15:26:07,461 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人边刷和尘盒维护保养建议'}
+2026-03-02 15:26:10,304 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-02 15:26:10,306 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有15条消息。
+2026-03-02 15:26:10,306 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 边刷维护：每日清理边刷上的灰尘和杂物，确保其能正常将边角灰尘扫入吸口；当刷毛长度磨损至小于1cm时，应立即更换。尘盒维护：每次清扫完成后，及时倾倒尘盒内垃圾，避免细菌滋生和异味产生。
+2026-03-02 15:26:41,557 - agent - INFO - history_manager.py:37 - [历史消息]会话49a3d34b的历史消息已保存
+2026-03-02 16:02:06,176 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 16:02:09,039 - agent - INFO - history_manager.py:37 - [历史消息]会话49a3d34b的历史消息已保存
+2026-03-02 16:02:14,203 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 16:02:16,065 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 16:02:16,791 - agent - INFO - history_manager.py:37 - [历史消息]会话49a3d34b的历史消息已保存
+2026-03-02 16:02:28,506 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 16:02:28,507 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-03-02 16:02:28,507 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 生成总结报告
+2026-03-02 16:02:32,453 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-03-02 16:02:32,453 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 16:02:32,453 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-03-02 16:02:32,454 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有13条消息。
+2026-03-02 16:02:32,455 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-03-02 16:02:34,854 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-03-02 16:02:34,854 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 16:02:34,854 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-03-02 16:02:34,854 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有15条消息。
+2026-03-02 16:02:34,854 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1006
+2026-03-02 16:02:36,685 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-03-02 16:02:36,685 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 16:02:36,685 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-03-02 16:02:36,687 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有17条消息。
+2026-03-02 16:02:36,688 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-10
+2026-03-02 16:02:40,087 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-03-02 16:02:40,088 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1006', 'month': '2025-10'}
+2026-03-02 16:02:40,088 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-03-02 16:02:40,089 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有19条消息。
+2026-03-02 16:02:40,089 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "150㎡别墅 | 儿童 | 多层", "效率": "跨楼层失败:2次/周\\n玩具避障率:80%", "耗材": "边刷寿命:剩余55天\\n集尘袋消耗:1.0个/月", "对比": "跨楼层导航优化完成+清洁效率提升10%"}
+2026-03-02 16:02:43,319 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-02 16:02:43,319 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '多层别墅扫地机器人使用建议和维护'}
+2026-03-02 16:02:48,629 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-02 16:02:48,630 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有21条消息。
+2026-03-02 16:02:48,630 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 多层别墅使用扫地机器人时，应为每层楼单独建图；更换楼层使用前，需清理机器人底部和传感器，并校准扫拖参数。日常维护包括：每次使用后清理尘盒、滤网和防撞条缝隙的毛发线头；用干软布擦拭机身；检查地面无尖锐物、电线等障碍；充电遵循“浅充浅放”原则；拖地后及时清洗拖布和水箱，避免油污或水渍残留；厨房、卫生间等特殊区域需针对性清洁与防护。长期使用应注意配件供应周期及个性化参数设置，以适配多层环境与个人清洁需求。
+2026-03-02 16:02:56,586 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 16:03:00,988 - agent - INFO - history_manager.py:37 - [历史消息]会话49a3d34b的历史消息已保存
+2026-03-02 16:22:27,686 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:22:27,686 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:22:27,771 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:22:27,772 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:22:27,777 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 16:22:45,133 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:22:45,133 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:22:45,136 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 16:23:03,696 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:23:03,696 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:23:03,983 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:23:03,983 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:23:03,986 - agent - INFO - history_manager.py:54 - [历史消息]会话49a3d34b的历史消息已加载
+2026-03-02 16:23:10,734 - agent - INFO - history_manager.py:68 - [历史消息]会话49a3d34b的历史消息已删除
+2026-03-02 16:23:55,917 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:23:55,917 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:24:02,854 - agent - WARNING - history_manager.py:50 - [历史消息]会话f72da4fd的历史消息文件不存在
+2026-03-02 16:24:04,676 - agent - INFO - history_manager.py:37 - [历史消息]会话f72da4fd的历史消息已保存
+2026-03-02 16:24:27,593 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:24:27,599 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:24:27,873 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:24:27,873 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:24:37,007 - agent - WARNING - history_manager.py:50 - [历史消息]会话24bed9b4的历史消息文件不存在
+2026-03-02 16:24:38,536 - agent - INFO - history_manager.py:37 - [历史消息]会话24bed9b4的历史消息已保存
+2026-03-02 16:25:27,768 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 16:25:28,855 - agent - INFO - history_manager.py:54 - [历史消息]会话f72da4fd的历史消息已加载
+2026-03-02 16:25:33,593 - agent - INFO - history_manager.py:68 - [历史消息]会话f72da4fd的历史消息已删除
+2026-03-02 16:44:50,941 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:44:50,941 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:44:56,571 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 16:45:07,111 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 16:45:09,201 - agent - INFO - history_manager.py:37 - [历史消息]会话24bed9b4的历史消息已保存
+2026-03-02 16:45:17,845 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 16:45:20,752 - agent - INFO - history_manager.py:37 - [历史消息]会话24bed9b4的历史消息已保存
+2026-03-02 16:45:43,184 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:45:43,185 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:45:43,466 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 16:45:43,466 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 16:45:43,473 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:13:53,367 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:13:57,262 - agent - INFO - history_manager.py:37 - [历史消息]会话24bed9b4的历史消息已保存
+2026-03-02 17:13:57,967 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:00,314 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:04,356 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:04,702 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:04,886 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:05,057 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:05,236 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:09,430 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:09,800 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:13,811 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:14,218 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:14,387 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:14:14,547 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:15:02,478 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:15:03,810 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 17:15:03,810 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)
+2026-03-02 17:15:03,810 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 17:15:06,019 - agent - INFO - history_manager.py:54 - [历史消息]会话24bed9b4的历史消息已加载
+2026-03-02 21:18:49,901 - agent - ERROR - vector_store.py:67 - [BM25] 初始化失败: Could not import rank_bm25, please install with `pip install rank_bm25`.
+Traceback (most recent call last):
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 55, in from_texts
+    from rank_bm25 import BM25Okapi
+ModuleNotFoundError: No module named 'rank_bm25'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 61, in _init_bm25_from_chroma
+    self.bm25_retriever = BM25Retriever.from_documents(documents)
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 102, in from_documents
+    return cls.from_texts(
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 57, in from_texts
+    raise ImportError(
+ImportError: Could not import rank_bm25, please install with `pip install rank_bm25`.
+2026-03-02 21:18:49,902 - agent - WARNING - vector_store.py:97 - [检索器] BM25未就绪，使用单路向量(mmr)检索
+2026-03-02 21:18:50,014 - agent - ERROR - vector_store.py:67 - [BM25] 初始化失败: Could not import rank_bm25, please install with `pip install rank_bm25`.
+Traceback (most recent call last):
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 55, in from_texts
+    from rank_bm25 import BM25Okapi
+ModuleNotFoundError: No module named 'rank_bm25'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 61, in _init_bm25_from_chroma
+    self.bm25_retriever = BM25Retriever.from_documents(documents)
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 102, in from_documents
+    return cls.from_texts(
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 57, in from_texts
+    raise ImportError(
+ImportError: Could not import rank_bm25, please install with `pip install rank_bm25`.
+2026-03-02 21:18:50,014 - agent - WARNING - vector_store.py:97 - [检索器] BM25未就绪，使用单路向量(mmr)检索
+2026-03-02 21:18:51,300 - agent - WARNING - history_manager.py:50 - [历史消息]会话default的历史消息文件不存在
+2026-03-02 21:18:55,331 - agent - INFO - history_manager.py:37 - [历史消息]会话default的历史消息已保存
+2026-03-02 21:18:55,955 - agent - INFO - history_manager.py:54 - [历史消息]会话default的历史消息已加载
+2026-03-02 21:18:55,956 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-03-02 21:18:55,956 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 给我生成我的使用报告
+2026-03-02 21:18:58,165 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_id
+2026-03-02 21:18:58,166 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 21:18:58,166 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_id调用成功
+2026-03-02 21:18:58,167 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-03-02 21:18:58,167 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 1001
+2026-03-02 21:19:01,182 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_current_month
+2026-03-02 21:19:01,182 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 21:19:01,182 - agent - INFO - middleware.py:24 - [tool monitor]工具get_current_month调用成功
+2026-03-02 21:19:01,183 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-03-02 21:19:01,183 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 2025-07
+2026-03-02 21:19:09,038 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fill_context_for_report
+2026-03-02 21:19:09,038 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-02 21:19:09,039 - agent - INFO - middleware.py:24 - [tool monitor]工具fill_context_for_report调用成功
+2026-03-02 21:19:09,039 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有9条消息。
+2026-03-02 21:19:09,039 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-03-02 21:19:12,186 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：fetch_external_data
+2026-03-02 21:19:12,188 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '1001', 'month': '2025-07'}
+2026-03-02 21:19:12,198 - agent - INFO - middleware.py:24 - [tool monitor]工具fetch_external_data调用成功
+2026-03-02 21:19:12,199 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有11条消息。
+2026-03-02 21:19:12,199 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | {"特征": "65㎡公寓 | 单身 | 木地板", "效率": "覆盖率:84%\\n日均清扫:44㎡\\n漏扫区域:沙发底部+床底", "耗材": "主刷寿命:剩余55天\\nHEPA滤网:剩余35%", "对比": "优于62%同面积用户（清洁频率略降）"}
+2026-03-02 21:19:14,655 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-03-02 21:19:14,655 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '小户型扫地机器人保养建议'}
+2026-03-02 21:19:20,817 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-03-02 21:20:49,025 - agent - ERROR - vector_store.py:67 - [BM25] 初始化失败: Could not import rank_bm25, please install with `pip install rank_bm25`.
+Traceback (most recent call last):
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 55, in from_texts
+    from rank_bm25 import BM25Okapi
+ModuleNotFoundError: No module named 'rank_bm25'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\AI_Agent_Study\HeiMaAgent1.22\rag\vector_store.py", line 61, in _init_bm25_from_chroma
+    self.bm25_retriever = BM25Retriever.from_documents(documents)
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 102, in from_documents
+    return cls.from_texts(
+  File "C:\AI_Agent_Study\HeiMaAgent1.22\.venv\lib\site-packages\langchain_community\retrievers\bm25.py", line 57, in from_texts
+    raise ImportError(
+ImportError: Could not import rank_bm25, please install with `pip install rank_bm25`.
+2026-03-02 21:20:49,046 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-02 21:20:49,054 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-02 21:20:49,061 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-02 21:20:49,069 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-02 21:20:49,076 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-02 21:20:49,082 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-02 21:20:49,084 - agent - WARNING - vector_store.py:97 - [检索器] BM25未就绪，使用单路向量(similarity)检索
+2026-03-02 21:20:49,430 - agent - WARNING - vector_store.py:97 - [检索器] BM25未就绪，使用单路向量(mmr)检索
+2026-03-02 21:22:51,037 - agent - INFO - vector_store.py:63 - [BM25] 混合检索器词频索引构建成功，共加载 329 个文本块。
+2026-03-02 21:22:51,038 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\扫地机器人100问.pdf 已存在，跳过
+2026-03-02 21:22:51,039 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\扫地机器人100问2.txt 已存在，跳过
+2026-03-02 21:22:51,039 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\扫拖一体机器人100问.txt 已存在，跳过
+2026-03-02 21:22:51,040 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\故障排除.txt 已存在，跳过
+2026-03-02 21:22:51,040 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\维护保养.txt 已存在，跳过
+2026-03-02 21:22:51,040 - agent - WARNING - vector_store.py:148 - [MD5] 文件 data\选购指南.txt 已存在，跳过
+2026-03-02 21:22:51,041 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(similarity)
+2026-03-02 21:22:51,401 - agent - INFO - vector_store.py:102 - [混合检索] 正在组装：BM25 + 向量(mmr)

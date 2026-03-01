@@ -1,8 +1,7 @@
 import time
 import uuid
-
 import streamlit as st
-from agent.react_agent import ReactAgent
+from agent.react_agent import SmartRoutingAgent
 from utils.history_manager import history_manager
 
 # 标题
@@ -52,7 +51,7 @@ if "session_id" not in st.session_state:
     st.session_state["session_id"] = "default"
 
 if "agent" not in st.session_state:
-    st.session_state["agent"] = ReactAgent()
+    st.session_state["agent"] = SmartRoutingAgent()
 
 if "message" not in st.session_state:
     st.session_state["message"] = []

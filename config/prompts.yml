@@ -3,3 +3,5 @@ main_prompt_path: prompts/main_prompt.txt
 rag_summarize_prompt_path: prompts/rag_summarize_prompt.txt
 
 report_prompt_path: prompts/report_prompt.txt
+
+classify_prompt_path: prompts/classify_prompt.txt

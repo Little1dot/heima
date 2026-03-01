@@ -42,4 +42,18 @@ def load_report_prompt():
     except Exception as e: 
         logger.error(f"[load_report_prompt]解析报告提示词出错。{str(e)}")
         raise e 
+
+def load_classify_prompt():
+    # 获取识别提示文件路径
+    try: 
+        classify_prompt_path = get_abs_path(prompts_config["classify_prompt_path"])
+    except KeyError as e: 
+        logger.error(f"[load_classify_prompt]未找到识别提示文件[classify_prompt_path]")
+        raise e 
+    # 读取文件
+    try:
+        return open(classify_prompt_path, "r", encoding="utf-8").read()
+    except Exception as e: 
+        logger.error(f"[load_classify_prompt]解析识别提示词出错。{str(e)}")
+        raise e 
     
