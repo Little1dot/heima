@@ -2,6 +2,8 @@ import sys
 import os 
 
 # --- 核心路径修复 ---
+
+# --- 核心路径修复 ---
 current_path = os.path.abspath(__file__)
 rag_dir = os.path.dirname(current_path)
 project_root = os.path.dirname(rag_dir)
@@ -13,7 +15,15 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.messages import HumanMessage, AIMessage
 
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.messages import HumanMessage, AIMessage
+
 from model.factory import chat_model
+from utils.prompt_loader import load_system_prompt,load_classify_prompt
+from utils.history_manager import history_manager
+
+# 导入你原有的工具和中间件
 from utils.prompt_loader import load_system_prompt,load_classify_prompt
 from utils.history_manager import history_manager
 
@@ -26,7 +36,10 @@ from agent.tools.middleware import monitor_tool, log_before_model, report_prompt
 from rag.rag_summerize import RagSummarizeService
 
 class SmartRoutingAgent:
+class SmartRoutingAgent:
     def __init__(self):
+        # 1. 初始化原始的重量级 ReAct Agent (用于复杂任务)
+        self.heavy_agent = create_agent(
         # 1. 初始化原始的重量级 ReAct Agent (用于复杂任务)
         self.heavy_agent = create_agent(
             model=chat_model,
@@ -35,6 +48,24 @@ class SmartRoutingAgent:
                    get_current_month, fetch_external_data, fill_context_for_report],
             middleware=[monitor_tool, log_before_model, report_prompt_switch],
         )
+        
+        # 2. 初始化 RAG 服务 (专职处理知识库问答)
+        self.rag_service = RagSummarizeService()
+        
+        # 3. 初始化意图路由器 (核心新增组件)
+        self.router_chain = self._build_router_chain()
+
+
+    def _build_router_chain(self):
+        """构建意图分类器 (Prompt已解耦)"""
+        # 1. 直接加载你的外部 Prompt 文件
+        prompt_text = load_classify_prompt() 
+        # 2. 转换为 LangChain 的 PromptTemplate
+        router_prompt = PromptTemplate.from_template(prompt_text)
+        
+        return router_prompt | chat_model | StrOutputParser()
+
+
         
         # 2. 初始化 RAG 服务 (专职处理知识库问答)
         self.rag_service = RagSummarizeService()
@@ -65,7 +96,40 @@ class SmartRoutingAgent:
         history_messages = history_manager.load_history(session_id)
         
         # --- 第 3 步：根据意图路由到不同的处理逻辑 ---
+        # --- 第 3 步：根据意图路由到不同的处理逻辑 ---
         full_response = ""
+        
+        if "chat" in intent:
+            # 通道 A：闲聊模式，直接用大模型对话，速度极快
+            input_messages = history_messages + [{"role": "user", "content": query}]
+            for chunk in chat_model.stream(input_messages):
+                if chunk.content:
+                    full_response += chunk.content
+                    yield chunk.content
+                    
+        elif "rag" in intent:
+            # 通道 B：单纯的 RAG 问答，不走 Agent 思考链
+            # 这里调用你写的 RAG 链，模拟流式输出以保持接口一致性
+            # (如果你的 rag_summarize 支持 stream，直接 yield 更好)
+            rag_result = self.rag_service.rag_summarize(query)
+            for char in rag_result: # 简单的逐字模拟流式
+                full_response += char
+                yield char
+                
+        else:
+            # 通道 C：默认走重量级 Agent (生成报告、查天气等)
+            input_messages = history_messages + [{"role": "user", "content": query}]
+            input_dict = {"messages": input_messages}
+            
+            for chunk in self.heavy_agent.stream(input_dict, stream_mode="values", context={"report": False}):
+                latest_message = chunk["messages"][-1]
+                # 过滤出 AI 的回复进行流式输出
+                if isinstance(latest_message, AIMessage) and latest_message.content:
+                    chunk_content = latest_message.content.strip() + "\n"
+                    full_response += chunk_content
+                    yield chunk_content
+
+        # --- 第 4 步：保存历史记录 (统一处理) ---
         
         if "chat" in intent:
             # 通道 A：闲聊模式，直接用大模型对话，速度极快
@@ -105,6 +169,9 @@ class SmartRoutingAgent:
         
         # 优化点：保留最近的对话记录，但不暴力切片，确保偶数（一问一答完整性）
         max_history_length = 20 
+        
+        # 优化点：保留最近的对话记录，但不暴力切片，确保偶数（一问一答完整性）
+        max_history_length = 20 
         if len(updated_history) > max_history_length:
             updated_history = updated_history[-max_history_length:]
             # 确保截断后的第一条一定是 user
@@ -115,7 +182,17 @@ class SmartRoutingAgent:
 
 if __name__ == '__main__':
     agent = SmartRoutingAgent()
+    agent = SmartRoutingAgent()
 
+    # print("\n--- 测试 1：闲聊 ---")
+    # for chunk in agent.execute_stream("你好，你是谁？"):
+    #     print(chunk, end="", flush=True)
+
+    print("\n--- 测试 2：RAG 问答 ---")
+    for chunk in agent.execute_stream("小户型适合哪种扫地机器人"):
+        print(chunk, end="", flush=True)
+    print("此处是分割部分，上面是 RAG 模式的输出，下面是复杂任务模式的输出")
+    print("\n--- 测试 3：复杂任务 ---")
     # print("\n--- 测试 1：闲聊 ---")
     # for chunk in agent.execute_stream("你好，你是谁？"):
     #     print(chunk, end="", flush=True)
