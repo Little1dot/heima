@@ -1,0 +1,14 @@
+# --- Python 垃圾 ---
+__pycache__/
+*.pyc
+
+# --- 数据库文件 (绝对不能传) ---
+cbroma_db/
+*.sqlite3
+
+# --- 日志文件 ---
+log/
+*.log
+
+# --- 系统生成的垃圾 ---
+.DS_Store

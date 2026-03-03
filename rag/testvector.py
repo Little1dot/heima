@@ -107,38 +107,26 @@ class VectorStoreService(object):
             bm25_retriever=self.bm25_retriever,
             rrf_ranker=rrf_ranker
         )
-        
-    
-
     def load_document(self):
         """加载文档入库并计算 MD5 过滤重复文件"""
         
-        # def check_md5_hex(md5_for_check: str):
-        #     md5_path = get_abs_path(chroma_config["md5_hex_store"])
-        #     if not os.path.exists(md5_path):
-        #         with open(md5_path, 'w', encoding='utf-8') as f: pass
-        #         return False
-            
-        #     with open(md5_path, 'r', encoding='utf-8') as f:
-        #         return any(line.strip() == md5_for_check for line in f.readlines())
-
-        # def save_md5_hex(md5_for_save: str):
-        #     with open(get_abs_path(chroma_config["md5_hex_store"]), 'a', encoding='utf-8') as f:
-        #         f.write(md5_for_save + '\n')
-
+        # 1. 内部函数：检查数据库中是否存在该 MD5
         def check_md5_hex(md5_for_check: str):
-            # 删掉原来的本地文件读取，改为调数据库
             return db_manager.is_file_exists(md5_for_check)
 
+        # 2. 内部函数：将新文件记录写入数据库
         def save_md5_hex(file_path: str, md5_for_save: str):
-            # 删掉原来的本地文件追加，改为写数据库
             file_name = os.path.basename(file_path)
+            # 注意：这里调用的是 db_handler.py 里的 add_file_record 方法
             db_manager.add_file_record(file_name, md5_for_save)
+
+        # 3. 内部函数：根据文件类型选择加载器
         def get_file_documents(file_path: str):
             if file_path.endswith(".pdf"): return PDf_loader(file_path)
             if file_path.endswith(".txt"): return txt_loader(file_path)
             return []
 
+        # 4. 获取目录下允许的文件列表
         allowed_type_files = listdir_with_allowed_type(
             chroma_config["data_path"], 
             tuple(chroma_config["allow_knowledge_file_type"])
@@ -152,22 +140,28 @@ class VectorStoreService(object):
                 logger.error(f"[MD5] 文件 {path} 计算失败")
                 continue
 
+            # --- 步骤 A: 查库判重 ---
             if check_md5_hex(md5_hex):
-                logger.warning(f"[MD5] 文件 {path} 已存在，跳过")
+                logger.warning(f"[MD5] 文件 {path} 已存在于 MySQL，跳过")
                 continue
 
             try: 
+                # --- 步骤 B: 加载与切割 ---
                 documents = get_file_documents(path)
                 if not documents: continue
 
                 split_documents = self.spliter.split_documents(documents)
                 if not split_documents: continue
 
+                # --- 步骤 C: 存入向量库 ---
                 self.vector_store.add_documents(split_documents)
-                save_md5_hex(md5_hex)
-                logger.info(f"[加载知识库] 文件 {path} 添加成功")
                 
-                # --- 修复点：标记新文档已添加 ---
+                # --- 步骤 D: 存入 MySQL (这里修正了参数) ---
+                # 错误写法: save_md5_hex(md5_hex) 
+                # 正确写法: ↓↓↓
+                save_md5_hex(path, md5_hex) 
+                
+                logger.info(f"[加载知识库] 文件 {path} 添加成功并记录到 MySQL")
                 is_new_doc_added = True
 
             except Exception as e:
@@ -178,7 +172,7 @@ class VectorStoreService(object):
         if is_new_doc_added:
             logger.info("[BM25] 检测到新文档入库，正在刷新内存索引...")
             self._init_bm25_from_chroma()
-
+            
 if __name__ == "__main__":
     service = VectorStoreService()
     service.load_document()
