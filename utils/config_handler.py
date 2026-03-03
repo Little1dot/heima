@@ -27,12 +27,18 @@ def load_prompts_config(config_path: str= get_abs_path("config/prompts.yml"), en
     with open(config_path, "r", encoding=encoding) as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
         return config
+
+def load_mysql_config(config_path: str= get_abs_path("config/mysql.yml"), encoding="utf-8"):
+    with open(config_path, "r", encoding=encoding) as f:
+        config = yaml.load(f, Loader=yaml.FullLoader)
+        return config
     
 
 rag_config = load_rag_config()
 chroma_config = load_chroma_config()
 agent_config =  load_agent_config()
 prompts_config = load_prompts_config()
+mysql_config = load_mysql_config()
 
 if __name__ == "__main__":
     print(rag_config["chat_model_name"])
