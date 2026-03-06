@@ -18,7 +18,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 from model.factory import chat_model
 from utils.prompt_loader import load_system_prompt,load_classify_prompt
 from utils.history_manager import history_manager
-
+from agent.tools.router import HybridIntentRouter
 
 # 导入你原有的工具和中间件
 from agent.tools.agent_tools import (rag_summarize, get_weather, get_user_location, get_user_id,
@@ -38,29 +38,18 @@ class SmartRoutingAgent:
                    get_current_month, fetch_external_data, fill_context_for_report],
             middleware=[monitor_tool, log_before_model, report_prompt_switch],
         )
+        self.router = HybridIntentRouter()
         
         # 2. 初始化 RAG 服务 (专职处理知识库问答)
         self.rag_service = RagSummarizeService()
         
-        # 3. 初始化意图路由器 (核心新增组件)
-        self.router_chain = self._build_router_chain()
-
-    def _build_router_chain(self):
-        """构建意图分类器 (Prompt已解耦)"""
-        # 1. 直接加载你的外部 Prompt 文件
-        prompt_text = load_classify_prompt() 
-        # 2. 转换为 LangChain 的 PromptTemplate
-        router_prompt = PromptTemplate.from_template(prompt_text)
-        
-        return router_prompt | chat_model | StrOutputParser()
-
 
     def execute_stream(self, query: str, session_id: str = "default"):
         """主入口：先路由，再分发执行"""
         
         # --- 第 1 步：意图识别 ---
         # 这一步是非流式的，但因为 Prompt 极短，通常在 0.5 秒内返回
-        intent = self.router_chain.invoke({"query": query}).strip().lower() # strip去除空白，lower统一小写
+        intent = self.router.predict_intent(query)
         print(f"\n[系统日志] 意图识别结果: => {intent} <=\n")
 
         # --- 第 2 步：加载历史记录 ---
@@ -68,9 +57,6 @@ class SmartRoutingAgent:
 
         # --- 第 3 步：根据意图路由到不同的处理逻辑 ---
         full_response = ""
-        
-
-        # --- 第 4 步：保存历史记录 (统一处理) ---
         
         if "chat" in intent:
             # 通道 A：闲聊模式，直接用大模型对话，速度极快
@@ -107,9 +93,6 @@ class SmartRoutingAgent:
             {"role": "user", "content": query},
             {"role": "assistant", "content": full_response}
         ]
-        
-        # 优化点：保留最近的对话记录，但不暴力切片，确保偶数（一问一答完整性）
-        max_history_length = 20 
         
         # 优化点：保留最近的对话记录，但不暴力切片，确保偶数（一问一答完整性）
         max_history_length = 20 

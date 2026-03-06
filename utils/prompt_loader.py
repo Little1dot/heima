@@ -56,4 +56,18 @@ def load_classify_prompt():
     except Exception as e: 
         logger.error(f"[load_classify_prompt]解析识别提示词出错。{str(e)}")
         raise e 
+
+def load_history_message_summarize_prompt():
+    # 获取历史消息总结提示文件路径
+    try: 
+        history_summarize_prompt_path = get_abs_path(prompts_config["history_summarize_prompt_path"])
+    except KeyError as e: 
+        logger.error(f"[load_history_message_summarize_prompt]未找到历史消息总结提示文件[history_summarize_prompt_path]")
+        raise e 
+    # 读取文件
+    try:
+        return open(history_summarize_prompt_path, "r", encoding="utf-8").read()
+    except Exception as e: 
+        logger.error(f"[load_history_message_summarize_prompt]解析历史消息总结提示词出错。{str(e)}")
+        raise e
     

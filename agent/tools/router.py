@@ -23,7 +23,7 @@ import numpy as np
 from numpy.linalg import norm
 from pydantic import BaseModel, Field
 from typing import Literal
-
+from utils.logger_handle import logger
 from langchain_core.prompts import PromptTemplate
 from model.factory import chat_model, embed_model
 from utils.prompt_loader import load_classify_prompt
@@ -38,6 +38,53 @@ class RouteDecision(BaseModel):
         description="chat: 日常打招呼与闲聊; rag: 关于扫地机器人的知识、故障排查、选购等问题; task: 查天气、定位或生成报告等需要调用工具的复杂指令。"
     )
 
+class QueryRewriter:
+    """
+    用于多轮对话的指代消解与上下文补全
+    把形如 "它有什么缺点" 结合上下文重写为 "T10扫地机有什么缺点"
+    """
+    def __init__(self):
+        self.rewrite_prompt = PromptTemplate.from_template(
+            "你是一个专业的搜索词优化专家。请根据下方的【历史对话上下文】，将用户的【最新问题】重写为一个独立、完整、意图明确的句子。\n"
+            "【规则】：\n"
+            "1. 补全最新问题中缺失的主语、代词（如把'它'替换为具体的设备型号）。\n"
+            "2. 如果最新问题已经很完整，或者与历史对话无关（如开始了新话题），请原样输出。\n"
+            "3. 绝对不要回答问题，只输出重写后的句子！\n\n"
+            "【历史对话上下文】：\n"
+            "{history}\n\n"
+            "【用户最新问题】：{query}\n\n"
+            "重写后的独立问题："
+        )
+
+    def rewrite(self, query: str, history: list) -> str:
+        # 如果没有历史记录，直接返回原问题
+        if not history:
+            return query
+
+        # 只需要提取最近的 3~5 轮对话作为参考即可，过滤掉 system 提示词
+        recent_history = [m for m in history if m['role'] in ['user', 'assistant']][-6:]
+        
+        # 将 history 列表格式化为纯文本
+        history_text = "\n".join([f"{m['role']}: {m['content']}" for m in recent_history])
+
+        try:
+            # 调用大模型进行极速重写 (非流式)
+            result = chat_model.invoke(self.rewrite_prompt.format(history=history_text, query=query))
+            rewritten_query = result.content.strip()
+            
+            # 清洗大模型可能输出的废话前缀
+            if "：" in rewritten_query:
+                rewritten_query = rewritten_query.split("：")[-1].strip()
+            if ":" in rewritten_query:
+                rewritten_query = rewritten_query.split(":")[-1].strip()
+                
+            logger.info(f"[Query重写] 原问题: 【{query}】 -> 重写后: 【{rewritten_query}】")
+            return rewritten_query
+            
+        except Exception as e:
+            logger.error(f"[Query重写] 重写失败，降级使用原问题: {e}")
+            return query
+        
 # ==========================================
 # 2. 语义路由器 (极速通道：空间换时间)
 # ==========================================
@@ -144,6 +191,9 @@ class HybridIntentRouter:
             # 终极物理兜底：如果 API 崩溃或极度异常，默认走最保守的 RAG 或者 Chat
             print(f"[路由异常] LLM 意图解析彻底失败，触发物理兜底。错误信息: {e}")
             return "chat"
+        
+        
+query_rewriter = QueryRewriter()
 
 if __name__ == "__main__":
     import time
