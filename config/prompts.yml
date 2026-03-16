@@ -5,3 +5,5 @@ rag_summarize_prompt_path: prompts/rag_summarize_prompt.txt
 report_prompt_path: prompts/report_prompt.txt
 
 classify_prompt_path: prompts/classify_prompt.txt
+
+history_summarize_prompt_path: prompts/history_message_summarize.txt

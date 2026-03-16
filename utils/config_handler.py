@@ -32,7 +32,7 @@ def load_mysql_config(config_path: str= get_abs_path("config/mysql.yml"), encodi
     with open(config_path, "r", encoding=encoding) as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
         return config
-    
+
 
 rag_config = load_rag_config()
 chroma_config = load_chroma_config()

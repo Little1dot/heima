@@ -16,9 +16,9 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.messages import HumanMessage, AIMessage
 
 from model.factory import chat_model
-from utils.prompt_loader import load_system_prompt,load_classify_prompt
+from agent.router.router import HybridIntentRouter
 from utils.history_manager import history_manager
-from agent.tools.router import HybridIntentRouter
+from utils.prompt_loader import load_system_prompt
 
 # 导入你原有的工具和中间件
 from agent.tools.agent_tools import (rag_summarize, get_weather, get_user_location, get_user_id,
@@ -32,7 +32,7 @@ class SmartRoutingAgent:
     def __init__(self):
         # 1. 初始化原始的重量级 ReAct Agent (用于复杂任务)
         self.heavy_agent = create_agent(
-            model=chat_model,
+            model= chat_model,
             system_prompt=load_system_prompt(),
             tools=[rag_summarize, get_weather, get_user_location, get_user_id,
                    get_current_month, fetch_external_data, fill_context_for_report],
@@ -53,7 +53,7 @@ class SmartRoutingAgent:
         print(f"\n[系统日志] 意图识别结果: => {intent} <=\n")
 
         # --- 第 2 步：加载历史记录 ---
-        history_messages = history_manager.load_history(session_id)
+        history_messages = history_manager.load_history(session_id) or []
 
         # --- 第 3 步：根据意图路由到不同的处理逻辑 ---
         full_response = ""
@@ -68,8 +68,6 @@ class SmartRoutingAgent:
                     
         elif "rag" in intent:
             # 通道 B：单纯的 RAG 问答，不走 Agent 思考链
-            # 这里调用你写的 RAG 链，模拟流式输出以保持接口一致性
-            # (如果你的 rag_summarize 支持 stream，直接 yield 更好)
             rag_result = self.rag_service.rag_summarize(query)
             for char in rag_result: # 简单的逐字模拟流式
                 full_response += char
@@ -80,13 +78,21 @@ class SmartRoutingAgent:
             input_messages = history_messages + [{"role": "user", "content": query}]
             input_dict = {"messages": input_messages}
             
-            for chunk in self.heavy_agent.stream(input_dict, stream_mode="values", context={"report": False}):
-                latest_message = chunk["messages"][-1]
-                # 过滤出 AI 的回复进行流式输出
-                if isinstance(latest_message, AIMessage) and latest_message.content:
-                    chunk_content = latest_message.content.strip() + "\n"
-                    full_response += chunk_content
-                    yield chunk_content
+            for chunk in self.heavy_agent.stream(input_dict, stream_mode="messages", context={"report": False}):
+                message_chunk = chunk[0] if isinstance(chunk, tuple) else chunk
+                
+                # 修改点 2：安全获取内容
+                if hasattr(message_chunk, 'content'):
+                    content = str(message_chunk.content)
+                    if content:
+                        full_response += content
+                        yield content
+                # latest_message = chunk["messages"][-1]
+                # # 过滤出 AI 的回复进行流式输出
+                # if isinstance(latest_message, AIMessage) and latest_message.content:
+                #     chunk_content = latest_message.content.strip() + "\n"
+                #     full_response += chunk_content
+                #     yield chunk_content
 
         # --- 第 4 步：保存历史记录 (统一处理) ---
         updated_history = history_messages + [
